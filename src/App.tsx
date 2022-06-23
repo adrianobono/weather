@@ -1,12 +1,15 @@
-import React from "react";
-import { Button } from "./components/button";
-import { Header } from "./components/header";
+import AppProvider from "./context/AppContext";
+import Wheather from "./components/weather/Weather";
+import { AppContext } from "./context/AppContext";
+import { useContext } from "react";
 
 function App() {
+  const context = useContext(AppContext);
   return (
     <div>
-      <Header />
-      <Button>Reload</Button>
+      <AppProvider>
+        <Wheather />
+      </AppProvider>
     </div>
   );
 }
