@@ -1,5 +1,5 @@
 import React from "react";
-import { Weather, Coord } from "../@types/wheather";
+import { Weather, Coord } from "../types/wheather";
 
 interface Props {
   children: React.ReactNode;

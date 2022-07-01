@@ -1,19 +1,23 @@
-import useGeolocation from "react-hook-geolocation";
 import { AppContext } from "../../context/AppContext";
-import { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 import { Stack } from "../stack";
 
 export const GeoLocal = () => {
-  const geolocation = useGeolocation();
   const context = useContext(AppContext);
+  const [gisData, setGisData] = useState(false);
   const { setCoordinates } = useContext(AppContext);
 
-  useEffect(() => {
-    geolocation.latitude &&
-      setCoordinates({ lat: geolocation.latitude, lon: geolocation.longitude });
-  }, [geolocation.latitude]);
+  !gisData &&
+    navigator.geolocation &&
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCoordinates({
+        lat: position.coords.latitude,
+        lon: position.coords.longitude,
+      });
+      setGisData(true);
+    });
 
-  return !geolocation.error ? (
+  return gisData ? (
     context && context.coords && (
       <Stack>
         <Stack direction="col">
@@ -23,6 +27,6 @@ export const GeoLocal = () => {
       </Stack>
     )
   ) : (
-    <Stack>Your browser don't support Geolocation, sorry...</Stack>
+    <Stack>There's no support to Geolocation, sorry...</Stack>
   );
 };

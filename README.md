@@ -30,7 +30,7 @@ From your command line:
 
 ```bash
 # Clone this repository
-$ git clone the repository
+$ git clone the repository: https://github.com/adrianobono/weather.git
 
 # Go into the repository
 $ cd local-weather

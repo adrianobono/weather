@@ -1,5 +1,5 @@
 import { URL_API, URL_KEY } from "../../config";
-import { Coord } from "../../@types/wheather";
+import { Coord } from "../../types/wheather";
 
 function getWeather(coords: Coord) {
   return fetch(
