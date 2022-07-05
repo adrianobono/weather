@@ -9,7 +9,7 @@ export const WeatBody = styled.div`
   border-left: 3px solid #ccc;
   box-sizing: border-box;
   padding: 15px;
-  font-size: ${window.innerWidth > 992 ? 1.2 + "em" : 0.7 + "em"};
+  font-size: 0.5em;
   font-weight: 500;
   margin-top: 2vh;
   border-radius: 15px;

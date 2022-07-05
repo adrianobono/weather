@@ -4,6 +4,7 @@ import { AppContext } from "./context/AppContext";
 import { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 
+
 const theme = {
   colors: {
     tan: "#fceed1",

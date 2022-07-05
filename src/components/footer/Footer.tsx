@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { Stack } from "components/stack";
+import { CompImgs } from "components/compimgs";
+import { Button } from "components/button";
 
-export const Footer = styled.footer`
+const FooterComp = styled.footer`
   height: 15vh;
   width: ${window.innerWidth > 992 ? 70 + "vw" : 95 + "vw"};
   display: flex;
@@ -27,3 +30,31 @@ export const Footer = styled.footer`
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 `;
+
+export const Footer = (props: any) => {
+  const handleClick = () => {
+    props.changeReset();
+  };
+  return (
+    props && (
+      <FooterComp>
+        <Stack>
+          <CompImgs id={"wind"} />
+          {Number(props.weather.wind?.speed).toFixed(2)} m/s
+        </Stack>
+        <Stack>
+          <CompImgs id={"umidade"} />
+          {Number(props.weather.main?.humidity)} %
+        </Stack>
+        <Button
+          role="button"
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          Reload
+        </Button>
+      </FooterComp>
+    )
+  );
+};

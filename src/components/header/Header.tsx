@@ -1,6 +1,9 @@
+import { CompImgs } from "components/compimgs";
+import { GeoLocal } from "components/geoLocal";
+import { Stack } from "components/stack";
 import styled from "styled-components";
 
-export const Header = styled.header`
+const HeaderComp = styled.header`
   height: 15vh;
   width: ${window.innerWidth > 992 ? 70 + "vw" : 95 + "vw"};
   display: flex;
@@ -28,3 +31,21 @@ export const Header = styled.header`
     font-size: 2em;
   }
 `;
+export const Header = (props: any) => {
+  return (
+    props &&
+    props.weather && (
+      <HeaderComp id={"header"}>
+        <CompImgs id={"clima"} />
+        <Stack>
+          <CompImgs id={"build"} />
+          <h2>{props.weather.name}</h2>
+        </Stack>
+        <Stack>
+          <CompImgs id={"compass"} />
+          <GeoLocal />
+        </Stack>
+      </HeaderComp>
+    )
+  );
+};
